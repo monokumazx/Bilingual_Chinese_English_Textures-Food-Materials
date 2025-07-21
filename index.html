@@ -221,10 +221,20 @@
             '降': ['下降', 'decompose'], '解': ['分解', 'decompose'],
             '收': ['收集', 'collect'], '亲': ['亲近', 'friendly'], '肤': ['皮肤', 'skin'],
             '菌': ['细菌', 'bacteria'],
-            '感': ['感觉', 'feel'], // Added missing character meaning
-            '泽': ['光泽', 'luster'], // Added missing character meaning
-            '膜': ['薄层', 'film'], // Added missing character meaning
-            '顺': ['顺利', 'smooth'] // Added missing character meaning
+            '感': ['感觉', 'feel'],
+            '泽': ['光泽', 'luster'],
+            '膜': ['薄层', 'film'],
+            '顺': ['顺利', 'smooth'],
+            '粒': ['颗粒', 'grain'], // Added
+            '块': ['块状', 'lump'], // Added
+            '泥': ['泥土', 'mud'], // Added
+            '稀': ['稀疏', 'sparse'], // Added
+            'Q': ['弹牙', 'bouncy'], // Added for Q弹
+            '僵': ['僵硬', 'stiff'], // Added
+            '亮': ['明亮', 'bright'], // Added
+            '透': ['透明', 'transparent'], // Added
+            '吸': ['吸收', 'absorb'], // Added
+            '音': ['声音', 'sound'] // Added
         };
 
         // Original data structure (deep copy to preserve for search filtering)
@@ -247,7 +257,11 @@
                             { chinese: "光滑", pinyin: "guāng huá", english: "Smooth / Polished", description_zh: "表面平整，无凹凸感。", description_en: "Surface is flat, with no bumps.", example_zh: "这款手机背面非常光滑。", example_en: "The back of this phone is very smooth." },
                             { chinese: "粗糙", pinyin: "cū cāo", english: "Rough / Coarse", description_zh: "表面不平滑，有摩擦感。", description_en: "Surface is not smooth, with a frictional feel.", example_zh: "这块麻布摸起来很粗糙。", example_en: "This linen feels very rough." },
                             { chinese: "弹性", pinyin: "tán xìng", english: "Elastic / Resilient", description_zh: "受力后能恢复原状的特性。", description_en: "The property of returning to its original shape after being subjected to force.", example_zh: "橡皮筋具有很好的弹性。", example_en: "Rubber bands have good elasticity." },
-                            { chinese: "柔韧", pinyin: "róu rèn", english: "Flexible and pliable", description_zh: "柔软且有韧性，不易断裂。", description_en: "Soft and tough, not easily broken.", example_zh: "这种材料非常柔韧，可以随意弯曲。", example_en: "This material is very flexible and can be bent at will." }
+                            { chinese: "柔韧", pinyin: "róu rèn", english: "Flexible and pliable", description_zh: "柔软且有韧性，不易断裂。", description_en: "Soft and tough, not easily broken.", example_zh: "这种材料非常柔韧，可以随意弯曲。", example_en: "This material is very flexible and can be bent at will." },
+                            { chinese: "脆", pinyin: "cuì", english: "Crisp / Brittle", description_zh: "易碎但干爽，常形容脆片或薄材料。", description_en: "Breaks easily with a dry snap, often used for chips or thin objects.", example_zh: "薯片吃起来很脆。", example_en: "Potato chips are very crisp." },
+                            { chinese: "粘", pinyin: "zhān", english: "Sticky", description_zh: "表面易黏附他物或手感发黏。", description_en: "Surface clings or feels tacky.", example_zh: "这种胶水干了之后有点粘。", example_en: "This glue feels a bit sticky after it dries." },
+                            { chinese: "滑", pinyin: "huá", english: "Slippery / Slippy", description_zh: "表面光滑到手滑，抓不住。", description_en: "So smooth that it feels hard to hold onto.", example_zh: "湿肥皂很滑。", example_en: "Wet soap is very slippery." },
+                            { chinese: "僵硬", pinyin: "jiāng yìng", english: "Stiff / Rigid", description_zh: "不柔软，不易弯曲或变形。", description_en: "Not soft, difficult to bend or deform.", example_zh: "长时间不活动，身体会变得僵硬。", example_en: "After a long period of inactivity, the body can become stiff." }
                         ]
                     }
                 ]
@@ -268,7 +282,8 @@
                             { chinese: "酥脆", pinyin: "sū cuì", english: "Crispy", description_zh: "外皮脆爽的质感，如薯片或炸鸡。", description_en: "Crisp texture on the outside, like potato chips or fried chicken.", example_zh: "炸鸡外皮酥脆，里面鲜嫩。", example_en: "The fried chicken has a crispy skin and is tender inside." },
                             { chinese: "软糯", pinyin: "ruǎn nuò", english: "Soft and sticky", description_zh: "食物软中带黏，如糯米或汤圆。", description_en: "Food is soft and sticky, like glutinous rice or tangyuan.", example_zh: "汤圆煮得软糯可口。", example_en: "The tangyuan are cooked soft and delightfully sticky." },
                             { chinese: "爽脆", pinyin: "shuǎng cuì", english: "Crisp and refreshing", description_zh: "质地脆爽且带有清新的口感，如蔬菜沙拉中的生菜或青瓜。", description_en: "Crisp and refreshing texture, like lettuce or cucumber in a vegetable salad.", example_zh: "这黄瓜吃起来很爽脆。", example_en: "This cucumber tastes very crisp and refreshing." },
-                            { chinese: "嚓嚓", pinyin: "chā chā", english: "Crunchy", description_zh: "咬起来发出清脆的声音，如新鲜的胡萝卜或饼干。", description_en: "Makes a crisp sound when bitten, like fresh carrots or biscuits.", example_zh: "新鲜的苹果咬起来嚓嚓响。", example_en: "A fresh apple makes a crunchy sound when bitten." }
+                            { chinese: "嚓嚓", pinyin: "chā chā", english: "Crunchy", description_zh: "咬起来发出清脆的声音，如新鲜的胡萝卜或饼干。", description_en: "Makes a crisp sound when bitten, like fresh carrots or biscuits.", example_zh: "新鲜的苹果咬起来嚓嚓响。", example_en: "A fresh apple makes a crunchy sound when bitten." },
+                            { chinese: "酥", pinyin: "sū", english: "Flaky / Crumbly", description_zh: "易碎成片，口感酥松或物理松散。", description_en: "Breaks into flakes easily, crumbly.", example_zh: "酥皮点心外酥里嫩。", example_en: "Flaky pastry is crisp outside and tender inside." }
                         ]
                     },
                     {
@@ -307,7 +322,8 @@
                             { chinese: "筋", pinyin: "jīn", english: "Sinewy / Chewy", description_zh: "肉中带有筋膜，有韧性，需要咀嚼。", description_en: "Meat contains sinews, making it tough and requiring chewing.", example_zh: "牛筋吃起来很有筋道。", example_en: "Beef tendons are very chewy to eat." },
                             { chinese: "弹牙", pinyin: "tán yá", english: "Springy / Bouncy", description_zh: "肉质有弹性，咬起来有韧劲。", description_en: "Meat is elastic and resilient when bitten.", example_zh: "虾滑煮熟后非常弹牙。", example_en: "Shrimp paste is very springy when cooked." },
                             { chinese: "入口即化", pinyin: "rù kǒu jí huà", english: "Melt-in-your-mouth", description_zh: "肉质极其软烂，几乎不用咀嚼即可吞咽。", description_en: "Meat is extremely soft and tender, almost melting in the mouth without needing to chew.", example_zh: "红烧肉炖得入口即化。", example_en: "The braised pork belly is stewed to melt-in-your-mouth tenderness." },
-                            { chinese: "爆汁", pinyin: "bào zhī", english: "Juicy / Bursting with juice", description_zh: "肉类烹饪后汁水丰富，咬开时汁液溢出。", description_en: "Cooked meat is rich in juices, which burst out when bitten.", example_zh: "小笼包一口咬下去会爆汁。", example_en: "When you bite into a soup dumpling, it bursts with juice." }
+                            { chinese: "爆汁", pinyin: "bào zhī", english: "Juicy / Bursting with juice", description_zh: "肉类烹饪后汁水丰富，咬开时汁液溢出。", description_en: "Cooked meat is rich in juices, which burst out when bitten.", example_zh: "小笼包一口咬下去会爆汁。", example_en: "When you bite into a soup dumpling, it bursts with juice." },
+                            { chinese: "多汁", pinyin: "duō zhī", english: "Juicy", description_zh: "食物含有大量汁液，口感湿润。", description_en: "Food contains a lot of juice, moist texture.", example_zh: "这个橙子非常多汁。", example_en: "This orange is very juicy." }
                         ]
                     },
                     {
@@ -332,7 +348,12 @@
                             { chinese: "黏糊", pinyin: "nián hú", english: "Gooey", description_zh: "质地浓稠、有黏性，通常指半流质或软烂的食物。", description_en: "Thick, sticky texture, usually referring to semi-liquid or soft, mushy food.", example_zh: "融化的巧克力酱非常黏糊。", example_en: "Melted chocolate sauce is very gooey." },
                             { chinese: "胶状", pinyin: "jiāo zhuàng", english: "Gelatinous", description_zh: "具有果冻或胶体般的质地。", description_en: "Having a jelly-like or colloidal texture.", example_zh: "煮好的猪皮冻是胶状的。", example_en: "Cooked pork skin jelly is gelatinous." },
                             { chinese: "充气", pinyin: "chōng qì", english: "Aerated", description_zh: "通过引入气体使食物变得轻盈蓬松。", description_en: "Made light and fluffy by incorporating air.", example_zh: "充气巧克力口感更轻盈。", example_en: "Aerated chocolate has a lighter texture." },
-                            { chinese: "易碎", pinyin: "yì suì", english: "Friable", description_zh: "容易破碎成小块或粉末。", description_en: "Easily crumbled into small pieces or powder.", example_zh: "这种饼干非常易碎。", example_en: "This biscuit is very friable." }
+                            { chinese: "易碎", pinyin: "yì suì", english: "Friable", description_zh: "容易破碎成小块或粉末。", description_en: "Easily crumbled into small pieces or powder.", example_zh: "这种饼干非常易碎。", example_en: "This biscuit is very friable." },
+                            { chinese: "粒状", pinyin: "lì zhuàng", english: "Granular", description_zh: "有颗粒感，明显由小颗粒构成。", description_en: "Made up of small grains or particles.", example_zh: "燕麦片是粒状的。", example_en: "Oatmeal is granular." },
+                            { chinese: "块状", pinyin: "kuài zhuàng", english: "Chunky / Lumpy", description_zh: "呈现为不规则的块状体。", description_en: "Appears in uneven chunks or lumps.", example_zh: "这碗汤里有大块状的蔬菜。", example_en: "This soup has chunky vegetables." },
+                            { chinese: "泥状", pinyin: "ní zhuàng", english: "Pastelike / Muddy", description_zh: "像泥巴般厚重湿润的状态。", description_en: "Thick and moist, like mud or paste.", example_zh: "捣碎的土豆呈泥状。", example_en: "Mashed potatoes are pasty." },
+                            { chinese: "稀", pinyin: "xī", english: "Thin / Watery", description_zh: "稠度很低，接近水状。", description_en: "Very runny or watery texture.", example_zh: "这汤太稀了。", example_en: "This soup is too thin." },
+                            { chinese: "稠", pinyin: "chóu", english: "Thick / Viscous", description_zh: "浓稠不易流动，有阻力感。", description_en: "Dense and slow-flowing, sticky or resistant.", example_zh: "番茄酱很稠。", example_en: "Ketchup is very thick." }
                         ]
                     }
                 ]
@@ -418,7 +439,9 @@
                             { chinese: "有图案", pinyin: "yǒu tú àn", english: "Patterned", description_zh: "表面具有重复或特定的装饰性图样。", description_en: "Surface has repetitive or specific decorative designs.", example_zh: "这款壁纸是有图案的。", example_en: "This wallpaper is patterned." },
                             { chinese: "斑驳", pinyin: "bān bó", english: "Dappled", description_zh: "表面颜色不均匀，有斑点或光影交错的效果。", description_en: "Surface color is uneven, with spots or a play of light and shadow.", example_zh: "阳光透过树叶在地面上形成斑驳的影子。", example_en: "Sunlight through the leaves creates dappled shadows on the ground." },
                             { chinese: "大理石纹", pinyin: "dà lǐ shí wén", english: "Marbled", description_zh: "表面具有大理石般不规则、流动的纹理。", description_en: "Surface has irregular, flowing patterns resembling marble.", example_zh: "这款蛋糕有漂亮的大理石纹。", example_en: "This cake has a beautiful marbled pattern." },
-                            { chinese: "几何图案", pinyin: "jǐ hé tú àn", english: "Geometric", description_zh: "表面由几何形状（如方、圆、三角）组成的图案。", description_en: "Surface pattern composed of geometric shapes (e.g., squares, circles, triangles).", example_zh: "现代建筑常采用几何图案设计。", example_en: "Modern architecture often features geometric patterns." }
+                            { chinese: "几何图案", pinyin: "jǐ hé tú àn", english: "Geometric", description_zh: "表面由几何形状（如方、圆、三角）组成的图案。", description_en: "Surface pattern composed of geometric shapes (e.g., squares, circles, triangles).", example_zh: "现代建筑常采用几何图案设计。", example_en: "Modern architecture often features geometric patterns." },
+                            { chinese: "光亮", pinyin: "guāng liàng", english: "Shiny / Luminous", description_zh: "表面反射光线，显得明亮有光泽。", description_en: "Surface reflects light, appearing bright and lustrous.", example_zh: "抛光后的金属表面非常光亮。", example_en: "The polished metal surface is very shiny." },
+                            { chinese: "透明", pinyin: "tòu míng", english: "Transparent", description_zh: "材料允许光线完全穿透，可以清晰地看到另一侧。", description_en: "Material allows light to pass through completely, enabling clear visibility of the other side.", example_zh: "玻璃是透明的。", example_en: "Glass is transparent." }
                         ]
                     }
                 ]
@@ -469,9 +492,7 @@
                             { chinese: "粘稠", pinyin: "nián chóu", english: "Sticky and thick", description_zh: "带有黏性且稠密。", description_en: "Sticky and dense.", example_zh: "这碗粥熬得很粘稠。", example_en: "This bowl of porridge is cooked very sticky and thick." },
                             { chinese: "松散", pinyin: "sōng sàn", english: "Crumbly", description_zh: "质地疏松易散。", description_en: "Loose and easily crumbled texture.", example_zh: "这款曲奇饼干口感松散，入口即化。", example_en: "This cookie has a crumbly texture and melts in your mouth." },
                             { chinese: "扎实", pinyin: "zhā shi", english: "Dense", description_zh: "结构紧密，不松散。", description_en: "Compact structure, not loose.", example_zh: "这个馒头很扎实，很有饱腹感。", example_en: "This steamed bun is very dense and filling." },
-                            { chinese: "滑腻", pinyin: "huá nì", english: "Slick / Smooth (with a hint of oiliness)", description_zh: "触感光滑，可能带有轻微的油润感。", description_en: "Feels smooth to the touch, possibly with a slight oily sheen.", example_zh: "这款身体乳涂完后皮肤滑腻。", example_en: "After applying this body lotion, the skin feels slick and smooth." },
-                            { chinese: "细腻", pinyin: "xì nì", english: "Fine and delicate", description_zh: "口感细腻无颗粒感。", description_en: "Smooth texture with no graininess.", example_zh: "这款慕斯蛋糕口感非常细腻。", example_en: "This mousse cake has a very fine and delicate texture." },
-                            { chinese: "油腻", pinyin: "yóu nì", english: "Greasy / Oily", description_zh: "触感油滑，有油光。", description_en: "Feels slippery and oily, with a greasy sheen.", example_zh: "这款防晒霜涂起来有点油腻。", example_en: "This sunscreen feels a bit greasy when applied." }
+                            { chinese: "细腻", pinyin: "xì nì", english: "Fine and delicate", description_zh: "口感细腻无颗粒感。", description_en: "Smooth texture with no graininess.", example_zh: "这款慕斯蛋糕口感非常细腻。", example_en: "This mousse cake has a very fine and delicate texture." }
                         ]
                     },
                     {
@@ -495,7 +516,9 @@
                             { chinese: "滑顺", pinyin: "huá shùn", english: "Smooth (application)", description_zh: "上脸推开很容易，顺滑不拉扯。", description_en: "Applies evenly and smoothly, no tugging.", example_zh: "这款妆前乳非常滑顺。", example_en: "This primer goes on very smoothly." },
                             { chinese: "粘腻", pinyin: "zhān nì", english: "Tacky / Sticky", description_zh: "涂抹后残留明显黏性，令人不适。", description_en: "Unpleasant sticky residue remains after application.", example_zh: "这款面膜有点粘腻。", example_en: "This mask feels a bit tacky." },
                             { chinese: "清爽", pinyin: "qīng shuǎng", english: "Refreshing / Non-greasy", description_zh: "无负担、易推开，不闷不油。", description_en: "Lightweight and breathable, not greasy or stuffy.", example_zh: "夏天我喜欢用清爽的凝露。", example_en: "I like using refreshing gels in summer." },
-                            { chinese: "厚膜感", pinyin: "hòu mó gǎn", english: "Occlusive / Mask-like feel", description_zh: "形成厚重保护膜感，质地包覆性强。", description_en: "Forms a heavy protective film or coating.", example_zh: "这款晚霜有明显厚膜感。", example_en: "This night cream has a strong occlusive feel." }
+                            { chinese: "厚膜感", pinyin: "hòu mó gǎn", english: "Occlusive / Mask-like feel", description_zh: "形成厚重保护膜感，质地包覆性强。", description_en: "Forms a heavy protective film or coating.", example_zh: "这款晚霜有明显厚膜感。", example_en: "This night cream has a strong occlusive feel." },
+                            { chinese: "滑腻", pinyin: "huá nì", english: "Slick / Smooth (with a hint of oiliness)", description_zh: "触感光滑，可能带有轻微的油润感。", description_en: "Feels smooth to the touch, possibly with a slight oily sheen.", example_zh: "这款身体乳涂完后皮肤滑腻。", example_en: "After applying this body lotion, the skin feels slick and smooth." },
+                            { chinese: "油腻", pinyin: "yóu nì", english: "Greasy / Oily", description_zh: "质地油重，容易堵塞毛孔或浮油。", description_en: "Feels oily or heavy; may clog pores.", example_zh: "有些防晒太油腻了。", example_en: "Some sunscreens feel too greasy." }
                         ]
                     }
                 ]
@@ -522,7 +545,9 @@
                             { chinese: "可降解", pinyin: "kě jiàng jiě", english: "Biodegradable", description_zh: "材料能被微生物分解，回归自然。", description_en: "Material can be decomposed by microorganisms and return to nature.", example_zh: "可降解塑料袋有助于环境保护。", example_en: "Biodegradable plastic bags contribute to environmental protection." },
                             { chinese: "可回收", pinyin: "kě huí shōu", english: "Recyclable", description_zh: "材料可以被收集和再利用。", description_en: "Material can be collected and reused.", example_zh: "玻璃瓶是可回收的。", example_en: "Glass bottles are recyclable." },
                             { chinese: "亲肤", pinyin: "qīn fū", english: "Skin-friendly", description_zh: "材料与皮肤接触时感觉舒适，不易引起刺激。", description_en: "Material feels comfortable when in contact with skin and is unlikely to cause irritation.", example_zh: "这款面料非常亲肤。", example_en: "This fabric is very skin-friendly." },
-                            { chinese: "抗菌", pinyin: "kàng jūn", english: "Antibacterial", description_zh: "材料能抑制细菌生长或杀死细菌。", description_en: "Material can inhibit the growth of bacteria or kill bacteria.", example_zh: "抗菌袜子有助于保持足部卫生。", example_en: "Antibacterial socks help maintain foot hygiene." }
+                            { chinese: "抗菌", pinyin: "kàng jūn", english: "Antibacterial", description_zh: "材料能抑制细菌生长或杀死细菌。", description_en: "Material can inhibit the growth of bacteria or kill bacteria.", example_zh: "抗菌袜子有助于保持足部卫生。", example_en: "Antibacterial socks help maintain foot hygiene." },
+                            { chinese: "防水", pinyin: "fáng shuǐ", english: "Waterproof", description_zh: "材料能完全阻止水分渗透。", description_en: "Material completely prevents water penetration.", example_zh: "这款手表是防水的。", example_en: "This watch is waterproof." },
+                            { chinese: "吸音", pinyin: "xī yīn", english: "Sound-absorbing", description_zh: "材料能吸收声波，减少回声和噪音。", description_en: "Material can absorb sound waves, reducing echo and noise.", example_zh: "录音棚墙壁常使用吸音材料。", example_en: "Recording studio walls often use sound-absorbing materials." }
                         ]
                     }
                 ]
@@ -537,7 +562,6 @@
                 const char1 = chineseWord[0];
                 const char2 = chineseWord[1];
                 const meaning1 = characterMeanings[char1] ? `${char1} (${characterMeanings[char1][0]}, ${characterMeanings[char1][1]})` : char1;
-                // Corrected syntax error here: removed extra backtick
                 const meaning2 = characterMeanings[char2] ? `${char2} (${characterMeanings[char2][0]}, ${characterMeanings[char2][1]})` : char2;
                 return `${meaning1} + ${meaning2} = ${chineseWord} (${description_zh})`;
             } else if (chineseWord.length === 1) {
