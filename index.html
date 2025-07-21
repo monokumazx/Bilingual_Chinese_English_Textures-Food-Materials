@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物资质地词汇大全 (Material Texture Vocabulary)</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* 轻灰色背景 */
+            color: #333;
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem 0.5rem 0 0; /* 圆角顶部 */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            background-color: #e5e7eb; /* 默认标签背景 */
+            color: #4b5563; /* 默认标签文字颜色 */
+            border-bottom: 2px solid transparent; /* 默认底部边框 */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .tab-button.active {
+            background-color: #ffffff; /* 激活标签背景 */
+            color: #1f2937; /* 激活标签文字颜色 */
+            border-bottom: 2px solid #3b82f6; /* 激活标签底部蓝色边框 */
+        }
+        .tab-content {
+            display: none;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0 0.5rem 0.5rem 0.5rem; /* 内容区域圆角 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            border-radius: 0.5rem; /* 表格圆角 */
+            overflow: hidden; /* 确保圆角可见 */
+        }
+        th, td {
+            border: 1px solid #e5e7eb; /* 浅灰色边框 */
+            padding: 0.75rem 1rem;
+            text-align: left;
+            vertical-align: top; /* Align content to top for multi-line descriptions */
+        }
+        th {
+            background-color: #f9fafb; /* 表头背景色 */
+            font-weight: 600;
+            color: #374151; /* 表头文字颜色 */
+        }
+        tr:nth-child(even) {
+            background-color: #f9fafb; /* 斑马纹效果 */
+        }
+        tr:hover {
+            background-color: #eff6ff; /* 悬停效果 */
+        }
+        .description-text {
+            line-height: 1.4; /* Improve readability for multi-line text */
+        }
+        .example-text {
+            font-size: 0.875rem; /* Smaller font for examples */
+            color: #6b7280; /* Slightly darker grey for examples */
+            margin-top: 0.5rem; /* Space above examples */
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: fixed; /* Changed from absolute to fixed for better positioning relative to viewport */
+            background-color: #333;
+            color: #fff;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            pointer-events: none; /* Allows clicks through the tooltip */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .tooltip.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+        <header class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-white text-center rounded-t-lg">
+            <h1 class="text-3xl font-bold mb-2">物资质地词汇大全 (Material Texture Vocabulary)</h1>
+            <p class="text-lg">中文、拼音、英文对照及说明 (Chinese, Pinyin, English对照 and Description)</p>
+        </header>
+
+        <div class="p-6">
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <input type="text" id="searchBar" oninput="filterVocabulary()" placeholder="搜索词汇 (Search vocabulary...)"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800">
+            </div>
+
+            <!-- Tab 导航 -->
+            <div class="flex border-b border-gray-200 overflow-x-auto pb-1">
+                <button class="tab-button active" onclick="showCategory('general-texture-vocabulary')">🌐 通用质地词汇 (General Texture Vocabulary)</button>
+                <button class="tab-button" onclick="showCategory('food-texture')">🍽 食物质地 (Food Texture)</button>
+                <button class="tab-button" onclick="showCategory('material-texture-structure')">🧱 材料触感与结构质地 (Material Texture & Structure)</button>
+                <button class="tab-button" onclick="showCategory('dynamic-performance')">🌀 动态表现 (Flow / Movement / Manipulation)</button>
+                <button class="tab-button" onclick="showCategory('static-sensory-states')">📌 静态属性与感官状态 (Static / Passive Sensory States)</button>
+            </div>
+
+            <!-- Tab 内容区域 -->
+            <div id="general-texture-vocabulary" class="tab-content active">
+                <!-- General texture subcategories will be rendered here -->
+            </div>
+
+            <div id="food-texture" class="tab-content">
+                <!-- Food texture subcategories will be rendered here -->
+            </div>
+
+            <div id="material-texture-structure" class="tab-content">
+                <!-- Material texture and structure subcategories will be rendered here -->
+            </div>
+
+            <div id="dynamic-performance" class="tab-content">
+                <!-- Dynamic performance subcategories will be rendered here -->
+            </div>
+
+            <div id="static-sensory-states" class="tab-content">
+                <!-- Static sensory states subcategories will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip Element -->
+    <div id="vocabularyTooltip" class="tooltip"></div>
+
+    <script>
+        // Mapping for individual Chinese character meanings for hover effect
+        const characterMeanings = {
+            '粗': ['不平滑', 'not smooth'],
+            '细': ['均匀微小', 'uniform and tiny'],
+            '柔': ['不硬', 'not stiff'],
+            '软': ['易变形', 'easily deformed'],
+            '硬': ['坚固', 'firm'],
+            '滑': ['顺畅', 'smooth'],
+            '光': ['平整', 'flat'],
+            '糙': ['不平整', 'not flat'],
+            '弹': ['可恢复', 'recoverable'],
+            '韧': ['不易断', 'not easily broken'],
+            '糊': ['软烂', 'mushy'],
+            '松': ['轻盈', 'light'],
+            '酥': ['脆', 'crisp'],
+            '脆': ['易碎', 'fragile'],
+            '糯': ['黏', 'sticky'],
+            '爽': ['清爽', 'refreshing'],
+            '粘': ['黏附', 'adhesive'],
+            '稠': ['浓密', 'dense'],
+            '散': ['疏松', 'loose'],
+            '扎': ['紧', 'tight'],
+            '实': ['实在', 'solid'],
+            '腻': ['油滑', 'oily and smooth'],
+            '绵': ['细密', 'fine and dense'],
+            '沙': ['颗粒', 'granular'],
+            '嫩': ['不老', 'not old'],
+            '筋': ['韧性', 'resilience'],
+            '柴': ['干硬', 'dry and tough'],
+            '爆': ['迸裂', 'bursting'],
+            '汁': ['液体', 'liquid'],
+            '蓬': ['膨胀', 'expanded'],
+            '水': ['含水', 'watery'],
+            '重': ['分量', 'weighty'],
+            '轻': ['不重', 'not heavy'],
+            '哑': ['无光泽', 'dull'],
+            '磨': ['摩擦', 'friction'],
+            '冰': ['寒冷', 'cold'],
+            '滋': ['滋养', 'nourishing'],
+            '干': ['无水', 'waterless'],
+            '油': ['脂肪', 'fat'],
+            '粉': ['粉末', 'powder']
+        };
+
+        // Original data structure (deep copy to preserve for search filtering)
+        let originalCategoriesData = {
+            'general-texture-vocabulary': {
+                title_zh: '通用质地词汇',
+                title_en: 'General Texture Vocabulary',
+                description_zh: '可用于描述多种物体或食物的基本物理属性，不限于特定类别或感官状态。',
+                description_en: 'General texture vocabulary that describes fundamental physical properties of various objects or foods, not limited to specific categories or sensory states.',
+                subcategories: [
+                    {
+                        id: 'universal-descriptive-terms',
+                        title_zh: '通用描述词',
+                        title_en: 'Universal Descriptive Terms',
+                        data: [
+                            { chinese: "粗", pinyin: "cū", english: "Coarse / Rough", description_zh: "质地不平滑，有颗粒感或纤维感。", description_en: "Texture is not smooth, with a grainy or fibrous feel.", example_zh: "这块布料摸起来很粗糙。", example_en: "This fabric feels very rough to the touch." },
+                            { chinese: "细", pinyin: "xì", english: "Fine / Delicate", description_zh: "质地均匀，颗粒微小或无颗粒感。", description_en: "Texture is uniform, with tiny or no particles.", example_zh: "这面粉磨得很细。", example_en: "This flour is very finely ground." },
+                            { chinese: "柔软", pinyin: "róu ruǎn", english: "Soft", description_zh: "触感舒适，不粗硬。", description_en: "Comfortable to the touch, not rough or stiff.", example_zh: "这款毛衣非常柔软。", example_en: "This sweater is very soft." },
+                            { chinese: "硬", pinyin: "yìng", english: "Hard", description_zh: "质地坚固，不易变形或损坏。", description_en: "Texture is firm, not easily deformed or damaged.", example_zh: "钻石是世界上最硬的物质。", example_en: "Diamond is the hardest substance in the world." },
+                            { chinese: "光滑", pinyin: "guāng huá", english: "Smooth / Polished", description_zh: "表面平整，无凹凸感。", description_en: "Surface is flat, with no bumps.", example_zh: "这款手机背面非常光滑。", example_en: "The back of this phone is very smooth." },
+                            { chinese: "粗糙", pinyin: "cū cāo", english: "Rough / Coarse", description_zh: "表面不平滑，有摩擦感。", description_en: "Surface is not smooth, with a frictional feel.", example_zh: "这块麻布摸起来很粗糙。", example_en: "This linen feels very rough." },
+                            { chinese: "弹性", pinyin: "tán xìng", english: "Elastic / Resilient", description_zh: "受力后能恢复原状的特性。", description_en: "The property of returning to its original shape after being subjected to force.", example_zh: "橡皮筋具有很好的弹性。", example_en: "Rubber bands have good elasticity." },
+                            { chinese: "柔韧", pinyin: "róu rèn", english: "Flexible and pliable", description_zh: "柔软且有韧性，不易断裂。", description_en: "Soft and tough, not easily broken.", example_zh: "这种材料非常柔韧，可以随意弯曲。", example_en: "This material is very flexible and can be bent at will." }
+                        ]
+                    }
+                ]
+            },
+            'food-texture': {
+                title_zh: '食物质地',
+                title_en: 'Food Texture',
+                description_zh: '专门描述食物的口感与咀嚼体验。包含“嫩滑”、“酥脆”、“嚼劲”等细致描述。',
+                description_en: 'Specifically describes the mouthfeel and chewing experience of food. Includes detailed descriptions like "tender and smooth," "crispy," and "chewy."',
+                subcategories: [
+                    {
+                        id: 'common-food-texture',
+                        title_zh: '常用食物质地词汇',
+                        title_en: 'Common Food Texture Vocabulary',
+                        data: [
+                            { chinese: "糊", pinyin: "hú", english: "Mushy / Pasty", description_zh: "食物因过度煮或泡发而变得软烂，缺乏结构感。", description_en: "Food becomes overly soft and mushy due to overcooking or soaking, lacking structure.", example_zh: "这碗面煮得太糊了（面太湖），一点嚼劲都没有。", example_en: "This bowl of noodles is cooked too mushy (面太湖), with no chewiness at all." },
+                            { chinese: "松软", pinyin: "sōng ruǎn", english: "Soft and fluffy", description_zh: "质地轻盈柔软，如蛋糕或馒头。", description_en: "Light and soft texture, like cake or steamed buns.", example_zh: "这个面包非常松软，口感很好。", example_en: "This bread is very soft and fluffy, with a great texture." },
+                            { chinese: "酥脆", pinyin: "sū cuì", english: "Crispy", description_zh: "外皮脆爽的质感，如薯片或炸鸡。", description_en: "Crisp texture on the outside, like potato chips or fried chicken.", example_zh: "炸鸡外皮酥脆，里面鲜嫩。", example_en: "The fried chicken has a crispy skin and is tender inside." },
+                            { chinese: "软糯", pinyin: "ruǎn nuò", english: "Soft and sticky", description_zh: "食物软中带黏，如糯米或汤圆。", description_en: "Food is soft and sticky, like glutinous rice or tangyuan.", example_zh: "汤圆煮得软糯可口。", example_en: "The tangyuan are cooked soft and delightfully sticky." },
+                            { chinese: "爽脆", pinyin: "shuǎng cuì", english: "Crisp and refreshing", description_zh: "质地脆爽且带有清新的口感，如蔬菜沙拉中的生菜或青瓜。", description_en: "Crisp and refreshing texture, like lettuce or cucumber in a vegetable salad.", example_zh: "这黄瓜吃起来很爽脆。", example_en: "This cucumber tastes very crisp and refreshing." },
+                            { chinese: "嚓嚓", pinyin: "chā chā", english: "Crunchy", description_zh: "咬起来发出清脆的声音，如新鲜的胡萝卜或饼干。", description_en: "Makes a crisp sound when bitten, like fresh carrots or biscuits.", example_zh: "新鲜的苹果咬起来嚓嚓响。", example_en: "A fresh apple makes a crunchy sound when bitten." }
+                        ]
+                    },
+                    {
+                        id: 'pasta-texture',
+                        title_zh: '面食质地',
+                        title_en: 'Pasta Texture',
+                        data: [
+                            { chinese: "嚼劲", pinyin: "jiáo jìn", english: "Chewy", description_zh: "面食有弹性且需用力咀嚼。", description_en: "Pasta is elastic and requires effort to chew.", example_zh: "这面条很有嚼劲。", example_en: "These noodles are very chewy." },
+                            { chinese: "弹牙", pinyin: "tán yá", english: "Springy / Al dente", description_zh: "面食有弹性，咬起来有韧性。", description_en: "Pasta is elastic and resilient when bitten.", example_zh: "意大利面煮得弹牙。", example_en: "The pasta is cooked al dente." },
+                            { chinese: "筋道", pinyin: "jīn dào", english: "Chewy / Resilient", description_zh: "形容面条或面食的韧性和弹性，耐嚼。", description_en: "Describes the toughness and elasticity of noodles or pasta, making them chewy.", example_zh: "手工面就是比机器面筋道。", example_en: "Hand-pulled noodles are more resilient than machine-made ones." },
+                            { chinese: "绵密", pinyin: "mián mì", english: "Dense and fine", description_zh: "形容面食组织紧密，口感细腻。", description_en: "Describes pasta with a dense and fine structure, resulting in a delicate texture.", example_zh: "这款蛋糕的组织非常绵密。", example_en: "The texture of this cake is very dense and fine." }
+                        ]
+                    },
+                    {
+                        id: 'tofu-soy-texture',
+                        title_zh: '豆腐与豆制品质地',
+                        title_en: 'Tofu & Soy Product Texture',
+                        data: [
+                            { chinese: "嫩滑", pinyin: "nèn huá", english: "Tender and smooth", description_zh: "豆腐质地细腻光滑，如嫩豆腐、内酯豆腐，入口即化。", description_en: "Tofu texture is fine and smooth, like silken tofu or lactone tofu, melting in the mouth.", example_zh: "内酯豆腐口感嫩滑。", example_en: "Silken tofu has a tender and smooth texture." },
+                            { chinese: "软嫩", pinyin: "ruǎn nèn", english: "Soft and delicate", description_zh: "豆腐质地柔软，如蒸豆腐，稍具支撑力但极易破碎。", description_en: "Tofu texture is soft, like steamed tofu, with slight support but easily broken.", example_zh: "蒸豆腐吃起来软嫩。", example_en: "Steamed tofu is soft and delicate to eat." },
+                            { chinese: "结实", pinyin: "jiē shí", english: "Firm", description_zh: "豆腐有较高的凝固度，如北豆腐或板豆腐，适合煎、炒或炖煮。", description_en: "Tofu has a higher degree of solidification, like firm tofu or pressed tofu, suitable for frying, stir-frying, or stewing.", example_zh: "北豆腐比较结实，适合用来煎。", example_en: "Northern tofu is firmer and suitable for frying." },
+                            { chinese: "弹滑", pinyin: "tán huá", english: "Springy and smooth", description_zh: "豆腐有轻微弹性，表面光滑，如冻豆腐或经过冷冻处理后的豆腐。", description_en: "Tofu has slight elasticity and a smooth surface, like frozen tofu or tofu processed after freezing.", example_zh: "冻豆腐煮火锅吃起来弹滑。", example_en: "Frozen tofu is springy and smooth when cooked in hot pot." },
+                            { chinese: "沙质", pinyin: "shā zhì", english: "Slightly grainy", description_zh: "口感带有颗粒感，如手工豆腐或粗磨豆腐，富有乡村风味。", description_en: "Texture has a grainy feel, like handmade tofu or coarsely ground tofu, with a rustic flavor.", example_zh: "这种手工豆腐有点沙质。", example_en: "This handmade tofu has a slightly grainy texture." },
+                            { chinese: "烤脆", pinyin: "kǎo cuì", english: "Crispy on the outside", description_zh: "豆腐表面经高温处理后变脆，如炸豆腐或烤豆腐，外脆内软。", description_en: "Tofu surface becomes crispy after high-temperature treatment, like fried tofu or baked tofu, crispy outside and soft inside.", example_zh: "炸豆腐外皮烤脆，里面很嫩。", example_en: "The fried tofu has a crispy exterior and is very tender inside." },
+                            { chinese: "干韧", pinyin: "gān rèn", english: "Dry and chewy", description_zh: "豆腐质地干且有韧性，如豆腐皮或腐竹，常用于凉拌或热炒。", description_en: "Tofu texture is dry and chewy, like tofu skin or dried bean curd sticks, often used in cold dishes or stir-fries.", example_zh: "腐竹泡发后干韧有嚼头。", example_en: "Dried bean curd sticks are dry and chewy after rehydration." },
+                            { chinese: "水嫩", pinyin: "shuǐ nèn", english: "Watery and tender", description_zh: "豆腐含水量较高，如水豆腐或生鲜豆腐，极为柔软且富有水分。", description_en: "Tofu has high water content, like water tofu or fresh tofu, extremely soft and moist.", example_zh: "这种水豆腐非常水嫩。", example_en: "This kind of water tofu is very watery and tender." }
+                        ]
+                    },
+                    {
+                        id: 'meat-fish-texture',
+                        title_zh: '肉类/鱼类质地',
+                        title_en: 'Meat / Fish Texture',
+                        data: [
+                            { chinese: "嫩", pinyin: "nèn", english: "Tender", description_zh: "肉质细嫩，易于咀嚼。", description_en: "Meat is fine and tender, easy to chew.", example_zh: "这块牛排煎得很嫩。", example_en: "This steak is cooked very tender." },
+                            { chinese: "柴", pinyin: "chái", english: "Fibrous / Tough", description_zh: "肉质干硬，纤维感重，不易咀嚼。", description_en: "Meat is dry and hard, with a strong fibrous feel, difficult to chew.", example_zh: "煮过头的鸡肉会变得很柴。", example_en: "Overcooked chicken can become very tough." },
+                            { chinese: "筋", pinyin: "jīn", english: "Sinewy / Chewy", description_zh: "肉中带有筋膜，有韧性，需要咀嚼。", description_en: "Meat contains sinews, making it tough and requiring chewing.", example_zh: "牛筋吃起来很有筋道。", example_en: "Beef tendons are very chewy to eat." },
+                            { chinese: "弹牙", pinyin: "tán yá", english: "Springy / Bouncy", description_zh: "肉质有弹性，咬起来有韧劲。", description_en: "Meat is elastic and resilient when bitten.", example_zh: "虾滑煮熟后非常弹牙。", example_en: "Shrimp paste is very springy when cooked." },
+                            { chinese: "入口即化", pinyin: "rù kǒu jí huà", english: "Melt-in-your-mouth", description_zh: "肉质极其软烂，几乎不用咀嚼即可吞咽。", description_en: "Meat is extremely soft and tender, almost melting in the mouth without needing to chew.", example_zh: "红烧肉炖得入口即化。", example_en: "The braised pork belly is stewed to melt-in-your-mouth tenderness." },
+                            { chinese: "爆汁", pinyin: "bào zhī", english: "Juicy / Bursting with juice", description_zh: "肉类烹饪后汁水丰富，咬开时汁液溢出。", description_en: "Cooked meat is rich in juices, which burst out when bitten.", example_zh: "小笼包一口咬下去会爆汁。", example_en: "When you bite into a soup dumpling, it bursts with juice." }
+                        ]
+                    },
+                    {
+                        id: 'fruit-dessert-texture',
+                        title_zh: '水果/甜点/糕点质地',
+                        title_en: 'Fruit / Dessert / Pastry Texture',
+                        data: [
+                            { chinese: "酥软", pinyin: "sū ruǎn", english: "Crisp and soft", description_zh: "外酥内软，如某些糕点。", description_en: "Crispy outside and soft inside, like some pastries.", example_zh: "这款蛋挞外皮酥软，内馅香甜。", example_en: "This egg tart has a crisp and soft crust with a sweet filling." },
+                            { chinese: "蓬松", pinyin: "péng sōng", english: "Fluffy / Airy", description_zh: "质地轻盈，内部充满空气感，如蛋糕。", description_en: "Light texture, full of air inside, like cake.", example_zh: "戚风蛋糕非常蓬松。", example_en: "Chiffon cake is very fluffy." },
+                            { chinese: "黏稠", pinyin: "nián chóu", english: "Sticky and thick", description_zh: "质地黏腻浓稠，如果酱或某些甜点馅料。", description_en: "Texture is sticky and dense, like jam or some dessert fillings.", example_zh: "这款酸奶非常黏稠。", example_en: "This yogurt is very sticky and thick." },
+                            { chinese: "水润", pinyin: "shuǐ rùn", english: "Moist / Juicy", description_zh: "含水量高，口感湿润。", description_en: "High water content, moist texture.", example_zh: "这款水果蛋糕吃起来很水润。", example_en: "This fruit cake tastes very moist." },
+                            { chinese: "弹性", pinyin: "tán xìng", english: "Bouncy / Chewy", description_zh: "形容食物有弹性、有嚼劲，口语中也常说“Q弹”。", description_en: "Describes food as elastic and chewy; colloquially referred to as 'Q-弹'.", example_zh: "珍珠奶茶里的珍珠很有弹性（Q弹）。", example_en: "The pearls in bubble tea are very bouncy (Q-弹)." },
+                            { chinese: "绵密", pinyin: "mián mì", english: "Dense and fine / Velvety", description_zh: "质地细腻紧密，口感顺滑。", description_en: "Texture is fine and compact, with a smooth mouthfeel.", example_zh: "芋泥的口感非常绵密。", example_en: "The taro paste has a very dense and fine texture." },
+                            { chinese: "脆皮", pinyin: "cuì pí", english: "Crispy crust", description_zh: "外层酥脆的表皮。", description_en: "The outer layer is a crispy crust.", example_zh: "烤鸭的脆皮是其特色。", example_en: "The crispy skin of roast duck is its specialty." }
+                        ]
+                    }
+                ]
+            },
+            'material-texture-structure': {
+                title_zh: '材料触感与结构质地',
+                title_en: 'Material Texture & Structure',
+                description_zh: '描述非食用品（如塑料、布、胶等）的手感、拉力、柔韧性与黏性等特性。用于包装、衣物、日用品等领域。',
+                description_en: 'Describes the tactile feel, tensile strength, flexibility, and stickiness of non-food items (e.g., plastics, fabrics, adhesives). Used in packaging, clothing, daily necessities, etc.',
+                subcategories: [
+                    {
+                        id: 'plastic-rubber-material',
+                        title_zh: '塑料与胶类材料质地',
+                        title_en: 'Plastic & Rubber Material Texture',
+                        data: [
+                            { chinese: "有胶性", pinyin: "yǒu jiāo xìng", english: "Gummy / Sticky", description_zh: "具有黏性或胶状感。", description_en: "Has stickiness or a gelatinous feel.", example_zh: "这种胶带很有胶性。", example_en: "This tape is very gummy." },
+                            { chinese: "无胶性", pinyin: "wú jiāo xìng", english: "Non-gummy / Non-sticky", description_zh: "不具有黏性或胶状感。", description_en: "Does not have stickiness or a gelatinous feel.", example_zh: "这款塑料表面无胶性。", example_en: "The surface of this plastic is non-gummy." },
+                            { chinese: "脆弱", pinyin: "cuì ruò", english: "Brittle / Fragile", description_zh: "易碎裂或断裂。", description_en: "Easily broken or fractured.", example_zh: "玻璃制品都很脆弱。", example_en: "Glass products are all very fragile." },
+                            { chinese: "耐刺穿", pinyin: "nài cì chuān", english: "Puncture-resistant", description_zh: "不易被尖锐物刺穿。", description_en: "Not easily punctured by sharp objects.", example_zh: "这种手套耐刺穿。", example_en: "These gloves are puncture-resistant." },
+                            { chinese: "黏性", pinyin: "nián xìng", english: "Adhesive / Sticky", description_zh: "具有黏附力。", description_en: "Has adhesive power.", example_zh: "胶水有很强的黏性。", example_en: "Glue has strong adhesiveness." }
+                        ]
+                    },
+                    {
+                        id: 'fabric-fiber-material',
+                        title_zh: '布料与纤维材料质地',
+                        title_en: 'Fabric & Fiber Material Texture',
+                        data: [
+                            { chinese: "有支撑感", pinyin: "yǒu zhī chēng gǎn", english: "Supportive / Structured", description_zh: "布料有一定硬度，能保持形状。", description_en: "Fabric has a certain stiffness and can maintain its shape.", example_zh: "这款西装面料很有支撑感。", example_en: "The fabric of this suit feels very supportive." }
+                        ]
+                    }
+                ]
+            },
+            'dynamic-performance': {
+                title_zh: '动态表现（形变/流动/拉扯）',
+                title_en: 'Flow / Movement / Manipulation',
+                description_zh: '描述物体的动作变化，涉及“易撕”、“可拉伸”、“流动性”、“回弹力”等。',
+                description_en: 'Describes changes in an object\'s movement, involving terms like "easy to tear," "stretchable," "fluidity," and "resilience."',
+                subcategories: [
+                    {
+                        id: 'deformation-flow-manipulation',
+                        title_zh: '形变、流动与操作性词汇',
+                        title_en: 'Deformation, Flow & Manipulability Vocabulary',
+                        data: [
+                            { chinese: "拉丝感", pinyin: "lā sī gǎn", english: "Stringy / Tacky (when stretched)", description_zh: "拉伸时出现丝状或黏连感。", description_en: "Appears stringy or sticky when stretched.", example_zh: "融化的芝士会有拉丝感。", example_en: "Melted cheese will have a stringy feel." },
+                            { chinese: "易断", pinyin: "yì duàn", english: "Brittle / Easily broken", description_zh: "缺乏韧性，容易断裂。", description_en: "Lacks toughness and breaks easily.", example_zh: "煮过头的面条会变得易断。", example_en: "Overcooked noodles become easily broken." },
+                            { chinese: "可塑", pinyin: "kě sù", english: "Malleable / Pliable", description_zh: "可以被塑形或变形。", description_en: "Can be molded or reshaped.", example_zh: "橡皮泥是一种可塑性很强的材料。", example_en: "Play-Doh is a very malleable material." },
+                            { chinese: "易吸收", pinyin: "yì xī shōu", english: "Easily absorbed", description_zh: "产品能迅速被皮肤吸收。", description_en: "Product is quickly absorbed by the skin.", example_zh: "这款精华液质地清爽，易吸收。", example_en: "This serum has a refreshing texture and is easily absorbed." }
+                        ]
+                    }
+                ]
+            },
+            'static-sensory-states': {
+                title_zh: '静态属性与感官状态',
+                title_en: 'Static / Passive Sensory States',
+                description_zh: '用于描述不动时的状态，如“湿润”、“厚实”、“沙沙的”、“粘腻”等，不涉及动作，仅描述感受。',
+                description_en: 'Used to describe a static state, such as "moist," "thick," "grainy," or "sticky," not involving movement, only describing sensory perception.',
+                subcategories: [
+                    {
+                        id: 'general-static-sensory',
+                        title_zh: '通用静态感官词汇',
+                        title_en: 'General Static Sensory Vocabulary',
+                        data: [
+                            { chinese: "干硬", pinyin: "gān yìng", english: "Dry and hard", description_zh: "缺乏水分，质地坚硬。", description_en: "Lacks moisture and has a hard texture.", example_zh: "饼干放久了会变得干硬。", example_en: "Biscuits will become dry and hard if left for too long." },
+                            { chinese: "粉质", pinyin: "fěn zhì", english: "Powdery", description_zh: "入口易化成粉状或表面有粉状感。", description_en: "Easily turns into powder in the mouth or has a powdery feel on the surface.", example_zh: "这种土豆煮熟后口感粉质。", example_en: "This type of potato has a powdery texture when cooked." },
+                            { chinese: "冰冷", pinyin: "bīng lěng", english: "Cold (to the touch)", description_zh: "触感冰凉，常用于金属。", description_en: "Feels cold to the touch, often used for metals.", example_zh: "冬天摸到金属扶手会觉得冰冷。", example_en: "Touching metal handrails in winter feels cold." },
+                            { chinese: "薄", pinyin: "báo", english: "Thin", description_zh: "厚度小，轻薄。", description_en: "Small thickness, light and thin.", example_zh: "这款衬衫面料很薄。", example_en: "The fabric of this shirt is very thin." },
+                            { chinese: "厚", pinyin: "hòu", english: "Thick", description_zh: "厚度大，有分量感。", description_en: "Large thickness, with a substantial feel.", example_zh: "冬天需要穿厚外套。", example_en: "You need to wear a thick coat in winter." },
+                            { chinese: "透气", pinyin: "tòu qì", english: "Breathable", description_zh: "空气容易通过，不闷热。", description_en: "Air passes easily, not stuffy.", example_zh: "棉麻面料非常透气。", example_en: "Cotton and linen fabrics are very breathable." },
+                            { chinese: "哑面", pinyin: "yǎ miàn", english: "Matte / Dull finish", description_zh: "表面无光泽，不反光。", description_en: "Surface has no luster and is non-reflective.", example_zh: "这款家具是哑面处理的。", example_en: "This furniture has a matte finish." },
+                            { chinese: "磨砂", pinyin: "mó shā", english: "Frosted / Sanded", description_zh: "表面经过磨砂处理，有细微颗粒感。", description_en: "Surface has been frosted, with a fine grainy feel.", example_zh: "磨砂玻璃有朦胧美感。", example_en: "Frosted glass has a hazy aesthetic." },
+                            { chinese: "沙沙", pinyin: "shā shā", english: "Grainy", description_zh: "带有细沙粒般的质感。", description_en: "Has a fine sandy texture.", example_zh: "这种梨吃起来有点沙沙的。", example_en: "This type of pear has a slightly grainy texture when eaten." }
+                        ]
+                    },
+                    {
+                        id: 'skin-cosmetic-feel',
+                        title_zh: '皮肤/化妆品触感',
+                        title_en: 'Skin / Cosmetic Feel',
+                        data: [
+                            { chinese: "滋润", pinyin: "zī rùn", english: "Moisturizing / Hydrating", description_zh: "能提供水分和滋养，使皮肤不干燥。", description_en: "Provides moisture and nourishment, keeping skin from drying out.", example_zh: "这款面霜非常滋润。", example_en: "This face cream is very moisturizing." },
+                            { chinese: "油腻", pinyin: "yóu nì", english: "Greasy / Oily", description_zh: "触感油滑，有油光。", description_en: "Feels slippery and oily, with a greasy sheen.", example_zh: "这款防晒霜涂起来有点油腻。", example_en: "This sunscreen feels a bit greasy when applied." },
+                            { chinese: "轻薄", pinyin: "qīng báo", english: "Lightweight / Sheer", description_zh: "质地轻盈，涂抹后无负担感。", description_en: "Light texture, no heavy feeling after application.", example_zh: "这款粉底液非常轻薄。", example_en: "This liquid foundation is very lightweight." },
+                            { chinese: "厚重", pinyin: "hòu zhòng", english: "Heavy / Rich", description_zh: "质地浓稠，涂抹后有存在感。", description_en: "Thick texture, feels substantial after application.", example_zh: "冬天我喜欢用厚重的面霜。", example_en: "In winter, I prefer using a heavy face cream." },
+                            { chinese: "滑腻", pinyin: "huá nì", english: "Slick / Smooth (with a hint of oiliness)", description_zh: "触感光滑，可能带有轻微的油润感。", description_en: "Feels smooth to the touch, possibly with a slight oily sheen.", example_zh: "这款身体乳涂完后皮肤滑腻。", example_en: "After applying this body lotion, the skin feels slick and smooth." },
+                            { chinese: "粉感", pinyin: "fěn gǎn", english: "Powdery feel", description_zh: "涂抹后有粉状残留或粉雾感。", description_en: "Leaves a powdery residue or a powdery mist feel after application.", example_zh: "有些散粉会留下很强的粉感。", example_en: "Some loose powders can leave a strong powdery feel." }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        let currentActiveCategory = 'general-texture-vocabulary'; // Keep track of the currently active category
+
+        // Function to generate hover info for Chinese words
+        function generateHoverInfo(chineseWord, description_zh) {
+            if (chineseWord.length === 2) {
+                const char1 = chineseWord[0];
+                const char2 = chineseWord[1];
+                const meaning1 = characterMeanings[char1] ? `${characterMeanings[char1][0]} (${characterMeanings[char1][1]})` : '?';
+                const meaning2 = characterMeanings[char2] ? `${characterMeanings[char2][0]} (${characterMeanings[char2][1]})` : '?';
+                return `${char1} (${meaning1}) + ${char2} (${meaning2}) = ${chineseWord} (${description_zh})`;
+            } else if (chineseWord.length === 1) {
+                const meaning = characterMeanings[chineseWord] ? `${characterMeanings[chineseWord][0]} (${characterMeanings[chineseWord][1]})` : description_zh;
+                return `${chineseWord} (${meaning})`;
+            }
+            return `${chineseWord} (${description_zh})`; // Default for longer or unparsed words
+        }
+
+        // Renders a single table given a container element and data
+        function renderTable(containerElement, data) {
+            // Only render table if data is not empty
+            if (data.length === 0) {
+                containerElement.innerHTML = '<p class="text-gray-500 text-center py-4">此类别暂无词汇。</p>';
+                return;
+            }
+
+            let tableHTML = `
+                <table class="min-w-full divide-y divide-gray-200 rounded-lg overflow-hidden mb-8">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">中文 (Chinese)</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">拼音 (Pinyin)</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">英文 (English)</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">说明 (Description)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+            `;
+            data.forEach(item => {
+                const hoverInfo = generateHoverInfo(item.chinese, item.description_zh);
+                tableHTML += `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                            onmouseover="showTooltip(event, '${hoverInfo.replace(/'/g, "\\'")}')" onmouseout="hideTooltip()">
+                            ${item.chinese}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.pinyin}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.english}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500 description-text">
+                            ${item.description_zh}<br>
+                            <span class="text-gray-400">(${item.description_en})</span>
+                            ${item.example_zh ? `<div class="example-text">${item.example_zh}<br>${item.example_en}</div>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+            containerElement.innerHTML += tableHTML; // Append to the container
+        }
+
+        // Renders all subcategories for a given main category ID
+        function renderSubcategories(mainCategoryId, filteredData = null) {
+            const mainCategoryContainer = document.getElementById(mainCategoryId);
+            mainCategoryContainer.innerHTML = ''; // Clear previous content
+
+            const mainCategory = originalCategoriesData[mainCategoryId];
+            const subcategories = mainCategory.subcategories;
+
+            // Add main category description
+            const mainDescription = document.createElement('p');
+            mainDescription.className = 'text-gray-700 text-base mb-6';
+            mainDescription.innerHTML = `${mainCategory.description_zh}<br><span class="text-gray-500">(${mainCategory.description_en})</span>`;
+            mainCategoryContainer.appendChild(mainDescription);
+
+            let hasRenderedSubcategory = false;
+            subcategories.forEach(sub => {
+                const dataToRender = filteredData ? filteredData[sub.id] || [] : sub.data;
+
+                if (dataToRender.length > 0) {
+                    hasRenderedSubcategory = true;
+                    const subCategorySection = document.createElement('div');
+                    subCategorySection.id = sub.id;
+                    subCategorySection.className = 'mb-8'; // Add margin bottom for spacing between sub-tables
+
+                    const subCategoryTitle = document.createElement('h3');
+                    subCategoryTitle.className = 'text-xl font-semibold mb-4 text-gray-700 border-b pb-2'; // Sub-category title styling
+                    subCategoryTitle.innerHTML = `${sub.title_zh} <span class="text-gray-500">(${sub.title_en})</span>`;
+                    subCategorySection.appendChild(subCategoryTitle);
+
+                    mainCategoryContainer.appendChild(subCategorySection);
+                    renderTable(subCategorySection, dataToRender);
+                }
+            });
+
+            // If no subcategories were rendered (all were empty or filtered out), show a message
+            if (!hasRenderedSubcategory) {
+                mainCategoryContainer.innerHTML += '<p class="text-gray-500 text-center py-4">此类别暂无匹配词汇。</p>';
+            }
+        }
+
+        // Function to switch between main categories
+        function showCategory(categoryId) {
+            currentActiveCategory = categoryId; // Update active category
+
+            // Hide all content areas
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active state from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected content area
+            document.getElementById(categoryId).classList.add('active');
+            // Activate the selected tab button
+            document.querySelector(`.tab-button[onclick="showCategory('${categoryId}')"]`).classList.add('active');
+
+            // Clear search bar and re-render current category
+            document.getElementById('searchBar').value = '';
+            renderSubcategories(categoryId);
+        }
+
+        // Function to filter vocabulary based on search input
+        function filterVocabulary() {
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            const activeCategoryData = originalCategoriesData[currentActiveCategory];
+            const filteredSubcategoriesData = {};
+
+            activeCategoryData.subcategories.forEach(sub => {
+                filteredSubcategoriesData[sub.id] = sub.data.filter(item => {
+                    return item.chinese.toLowerCase().includes(searchTerm) ||
+                           item.pinyin.toLowerCase().includes(searchTerm) ||
+                           item.english.toLowerCase().includes(searchTerm) ||
+                           item.description_zh.toLowerCase().includes(searchTerm) ||
+                           item.description_en.toLowerCase().includes(searchTerm);
+                });
+            });
+            renderSubcategories(currentActiveCategory, filteredSubcategoriesData);
+        }
+
+        // Tooltip functions
+        const tooltip = document.getElementById('vocabularyTooltip');
+
+        function showTooltip(event, text) {
+            tooltip.textContent = text;
+            tooltip.classList.add('active');
+
+            // Get the bounding rectangle of the hovered element (td)
+            const targetRect = event.currentTarget.getBoundingClientRect();
+
+            // Position the tooltip relative to the target element
+            // Place it to the right of the element, with a small offset
+            let x = targetRect.right + 10;
+            let y = targetRect.top;
+
+            // Ensure tooltip stays within viewport
+            const tooltipWidth = tooltip.offsetWidth;
+            const tooltipHeight = tooltip.offsetHeight;
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Adjust if tooltip goes off screen to the right
+            if (x + tooltipWidth > viewportWidth - 20) { // Add some padding from right edge
+                x = targetRect.left - tooltipWidth - 10; // Place to the left
+            }
+            // Adjust if tooltip goes off screen to the left (e.g., if placed to the left initially)
+            if (x < 10) {
+                x = 10; // Align to left edge
+            }
+
+            // Adjust if tooltip goes off screen at the top/bottom
+            if (y + tooltipHeight > viewportHeight - 20) { // Add some padding from bottom edge
+                y = viewportHeight - tooltipHeight - 10; // Align to bottom of viewport
+            }
+            if (y < 10) {
+                y = 10; // Align to top of viewport
+            }
+
+            tooltip.style.left = `${x}px`;
+            tooltip.style.top = `${y}px`;
+        }
+
+        function hideTooltip() {
+            tooltip.classList.remove('active');
+        }
+
+        // Initial render on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showCategory('general-texture-vocabulary'); // Default to General Texture Vocabulary
+        });
+    </script>
+</body>
+</html>
